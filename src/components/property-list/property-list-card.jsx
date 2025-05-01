@@ -7,6 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { CuboidIcon as Cube, Expand, Heart, Info, MapPin, Share2, Wallet } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 
 export default function PropertyListingCard({
@@ -28,6 +29,7 @@ export default function PropertyListingCard({
   liked = false,
 }) {
   const [isLiked, setIsLiked] = useState(liked)
+  const router = useRouter()
 
   return (
     <Link
@@ -158,7 +160,7 @@ export default function PropertyListingCard({
             <Wallet className="mr-2 h-4 w-4" />
             Buy Now
           </Button>
-          <Button variant="outline" className="flex-1">
+          <Button variant="outline" className="flex-1" onClick={() => router.push(`/metaverse`)}>
             View in Metaverse
           </Button>
         </CardFooter>

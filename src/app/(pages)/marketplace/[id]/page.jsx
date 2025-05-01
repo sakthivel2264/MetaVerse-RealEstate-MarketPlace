@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/badge"
@@ -20,6 +22,8 @@ import {
   Wallet,
 } from "lucide-react"
 import Navbar from "@/components/navbar/navBar"
+import { useRouter } from "next/navigation"
+import { use } from 'react';
 
 // Mock database - in a real app, this would be fetched from your API
 const getPropertyData = (id) => {
@@ -368,11 +372,13 @@ const getPropertyData = (id) => {
 }
 
 export default function PropertyDetail({ params }) {
-  const property = getPropertyData(params.id)
+  const { id } = use(params);
+  const property = getPropertyData(id)
 
   if (!property) {
     notFound()
   }
+  const router = useRouter()
 
   return (
     <div>
@@ -380,7 +386,7 @@ export default function PropertyDetail({ params }) {
     <main className="container mx-auto px-4 py-8 mt-16">
       <div className="mb-6">
         <Link
-          href="/"
+          href="/marketplace"
           className="mb-4 inline-flex items-center text-sm font-medium text-purple-600 hover:text-purple-800"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -480,7 +486,7 @@ export default function PropertyDetail({ params }) {
                 ))}
               </ul>
 
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full" onClick={() => router.push(`/marketplace/${id}/metaverse`)}>
                 <Eye className="mr-2 h-4 w-4" />
                 View in Metaverse
               </Button>
