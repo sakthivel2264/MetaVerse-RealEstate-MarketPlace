@@ -26,7 +26,6 @@ const Building = ({ position, size, landId, landInfo, setLandName, setLandOwner,
 
     return (
         <mesh position={position} onClick={clickHandler}>
-            {/* Use boxGeometry instead of deprecated boxBufferGeometry */}
             <boxGeometry args={size} />
             <meshStandardMaterial map={color} normalMap={surface} metalness={20} />
         </mesh>
