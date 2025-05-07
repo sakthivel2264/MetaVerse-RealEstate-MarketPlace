@@ -128,7 +128,7 @@ const FloatingAIRealEstateAgent = () => {
       </button>
 
       {isOpen && (
-        <div className="w-xl bg-white border rounded-lg shadow-lg flex flex-col p-3 mt-2">
+        <div className="w-xl h-96 bg-white border rounded-lg shadow-lg flex flex-col p-3 mt-2">
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-lg font-semibold">MetaEstate AI Agent</h2>
             <button
